@@ -1,0 +1,41 @@
+services:
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: rabbitmq
+    ports:
+      - "5672:5672" 
+      - "15672:15672" 
+    environment:
+      - RABBITMQ_DEFAULT_USER=guest
+      - RABBITMQ_DEFAULT_PASS=guest
+
+  msavaliadorcredito:
+    build:
+      context: ./msavaliadorcredito
+    depends_on:
+      - rabbitmq
+    environment:
+      - RABBITMQ_SERVER=rabbitmq
+      # - EUREKA_SERVER=eureka
+    ports:
+      - "8081:8081"
+
+  mscartoes:
+    build:
+      context: ./mscartoes
+    depends_on:
+      - rabbitmq
+    environment:
+      - RABBITMQ_SERVER=rabbitmq
+    ports:
+      - "8082:8082"
+
+  msclientes:
+    build:
+      context: ./msclientes
+    depends_on:
+      - rabbitmq
+    environment:
+      - RABBITMQ_SERVER=rabbitmq
+    ports:
+      - "8083:8083"

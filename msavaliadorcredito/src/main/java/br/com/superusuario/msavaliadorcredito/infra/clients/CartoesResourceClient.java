@@ -9,7 +9,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
-@FeignClient(value = "mscartoes", path = "/cartoes")
+@FeignClient(
+        name = "mscartoes",
+        url = "${mscartoes.url}",
+        path = "/cartoes"
+)
 public interface CartoesResourceClient {
 
     @GetMapping(params = "cpf")
@@ -18,3 +22,4 @@ public interface CartoesResourceClient {
     @GetMapping(params = "renda")
     ResponseEntity<List<Cartao>> cartoesRendaAte(@RequestParam("renda") Long renda);
 }
+

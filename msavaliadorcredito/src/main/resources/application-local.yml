@@ -9,9 +9,9 @@ spring:
 
 msclientes:
   url: http://localhost:8083
+
 mscartoes:
   url: http://localhost:8082
-
 
 server:
   port: 8081

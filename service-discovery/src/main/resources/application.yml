@@ -5,8 +5,8 @@ spring:
     basic:
       enable: true
     user:
-      name: admin # TODO Change to env-var
-      password: admin # TODO Change to env-var
+      name: guest # TODO Change to env-var
+      password: guest # TODO Change to env-var
 
 server:
   port: 8761
